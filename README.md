@@ -1,5 +1,3 @@
-Markdown
-
 # LiterAlura Challenge 📚
 
 ![Java](https://img.shields.io/badge/Java-17-blue?style=for-the-badge&logo=java)
@@ -9,11 +7,14 @@ Markdown
 
 **Status do Projeto:** Finalizado ✔️
 
+---
+
 ## 📖 Descrição
 
-O **LiterAlura** é uma aplicação de catálogo de livros interativa via console, desenvolvida como parte do Challenge de Java da Alura. A aplicação consome a API pública [Gutendex](https://gutendex.com/) para buscar e registrar livros e seus autores, armazenando os dados em um banco de dados PostgreSQL.
+O **LiterAlura** é uma aplicação de catálogo de livros interativa via console, desenvolvida como parte do Challenge de Java da Alura.  
+A aplicação consome a API pública [Gutendex](https://gutendex.com/) para buscar e registrar livros e autores, armazenando os dados de forma persistente em um banco de dados PostgreSQL.
 
-O objetivo é permitir que o usuário interaja com um vasto acervo de livros, realizando buscas, listando informações e consultando dados específicos, como autores vivos em um determinado ano ou livros por idioma.
+O objetivo principal é oferecer ao usuário uma forma simples de interagir com um vasto acervo de livros, permitindo realizar buscas, listar informações e consultar dados específicos, como autores vivos em um determinado ano ou livros por idioma.
 
 ---
 
@@ -21,71 +22,114 @@ O objetivo é permitir que o usuário interaja com um vasto acervo de livros, re
 
 O menu interativo da aplicação oferece as seguintes opções:
 
-1.  **Buscar Livro por Título:** Pesquisa por um livro na API Gutendex e o salva no banco de dados local.
-2.  **Listar Livros Registrados:** Exibe todos os livros que foram salvos no banco de dados.
-3.  **Listar Autores Registrados:** Exibe todos os autores que foram salvos no banco de dados.
-4.  **Listar Autores Vivos em um Determinado Ano:** Permite ao usuário inserir um ano e exibe os autores que estavam vivos naquele período.
-5.  **Listar Livros em um Determinado Idioma:** Exibe uma lista de livros disponíveis em um idioma específico (ex: `es` para espanhol, `en` para inglês).
+1. **Buscar Livro por Título** → Pesquisa por um livro na API Gutendex e o salva no banco de dados local.  
+2. **Listar Livros Registrados** → Exibe todos os livros que foram salvos no banco de dados.  
+3. **Listar Autores Registrados** → Exibe todos os autores que foram salvos no banco de dados.  
+4. **Listar Autores Vivos em um Determinado Ano** → Permite inserir um ano e exibe os autores vivos nesse período.  
+5. **Listar Livros em um Determinado Idioma** → Exibe uma lista de livros disponíveis em um idioma específico (ex: `es` para espanhol, `en` para inglês).  
+6. **Sair** → Encerra a aplicação.  
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-Este projeto foi construído utilizando as seguintes tecnologias e bibliotecas:
+- **Java 17**
+- **Spring Boot**
+- **Spring Data JPA**
+- **PostgreSQL**
+- **Maven**
+- **Jackson**
 
-* **Java 17:** Versão da linguagem Java utilizada.
-* **Spring Boot:** Framework principal para a criação da aplicação stand-alone.
-* **Spring Data JPA:** Para persistência de dados e comunicação com o banco de dados de forma simplificada.
-* **PostgreSQL:** Sistema de gerenciamento de banco de dados relacional para armazenamento dos dados.
-* **Maven:** Gerenciador de dependências e build do projeto.
-* **Jackson:** Biblioteca para conversão de dados JSON (da API) para objetos Java.
+---
+
+## 🏛️ Estrutura do Projeto
+
+```bash
+/src/main/java/com/example/literalura
+├── model/
+│   ├── Autor.java
+│   └── Livro.java
+├── repository/
+│   ├── AutorRepository.java
+│   └── LivroRepository.java
+├── service/
+│   ├── ConsumoAPIService.java
+│   └── ConverteDadosService.java
+├── controller/ (ou principal)
+│   └── Principal.java
+└── LiteraluraApplication.java
+```
+
+- **`model`** → Entidades JPA (`Livro` e `Autor`).  
+- **`repository`** → Interfaces `JpaRepository` para operações CRUD.  
+- **`service`** → Lógica de negócio (consumo da API e conversão dos dados JSON).  
+- **`principal`** → Menu interativo e lógica de interação com o usuário.  
+- **`LiteraluraApplication.java`** → Ponto de entrada da aplicação Spring Boot.  
+
+---
+
+## 📄 Modelo de Dados
+
+### Entidades:
+
+**Autor**
+- `id` (PK)  
+- `nome`  
+- `anoNascimento`  
+- `anoFalecimento`  
+
+**Livro**
+- `id` (PK)  
+- `titulo`  
+- `idioma`  
+- `numeroDownloads`  
+- `autor_id` (FK para Autor)  
+
+Relacionamento: **Um-para-Muitos** → Um autor pode ter vários livros.  
 
 ---
 
 ## 🚀 Como Executar o Projeto
 
-Siga os passos abaixo para configurar e executar o projeto em seu ambiente local.
-
 ### Pré-requisitos
+- **JDK 17** ou superior  
+- **Maven** instalado  
+- **PostgreSQL** ativo  
 
-* **JDK 17** ou superior instalado.
-* **Maven** instalado e configurado.
-* Um servidor **PostgreSQL** ativo.
-
-### 1. Clone o Repositório
-
+### 1️⃣ Clone o Repositório
 ```bash
-git clone [https://github.com/eliel2107/Challenge-LiterAlura.git](https://github.com/eliel2107/Challenge-LiterAlura.git)
+git clone https://github.com/eliel2107/Challenge-LiterAlura.git
 cd Challenge-LiterAlura
-2. Configure o Banco de Dados
-Crie um banco de dados no PostgreSQL com o nome literalura.
+```
 
-Abra o arquivo src/main/resources/application.properties.
+### 2️⃣ Configure o Banco de Dados
+- Crie o banco `literalura` no PostgreSQL.  
+- Abra o arquivo `src/main/resources/application.properties` e edite:  
 
-Altere as propriedades spring.datasource.username e spring.datasource.password com suas credenciais de acesso ao PostgreSQL.
-
-Properties
-
+```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/literalura
 spring.datasource.username=SEU_USUARIO_AQUI
 spring.datasource.password=SUA_SENHA_AQUI
 spring.jpa.hibernate.ddl-auto=update
-3. Compile e Execute
-Você pode executar a aplicação diretamente pela sua IDE (como IntelliJ ou Eclipse) ou utilizando o Maven no terminal.
+```
 
-Bash
-
-# Para compilar e empacotar o projeto
+### 3️⃣ Compile e Execute
+```bash
+# Compilar e empacotar
 mvn clean package
 
-# Para executar o arquivo .jar gerado
+# Executar
 java -jar target/Challenge-LiterAlura-0.0.1-SNAPSHOT.jar
-Após a execução, o menu interativo será exibido no console e você poderá começar a usar a aplicação.
+```
 
-🕹️ Como Usar
-Ao iniciar a aplicação, um menu será exibido no console com as opções disponíveis.
-Basta digitar o número da opção desejada e pressionar Enter para interagir com o catálogo de livros.
+Após a execução, o menu interativo será exibido no console.  
 
+---
+
+## 🕹️ Exemplos de Uso
+
+### Menu Principal:
+```
 *************************************************
 Escolha um número no menu:
 1- Buscar livro por título
@@ -95,5 +139,32 @@ Escolha um número no menu:
 5- Listar livros em um determinado idioma
 0- Sair
 *************************************************
-👨‍💻 Autor
-Desenvolvido por Eliel
+```
+
+### Buscar Livro:
+```
+Digite o nome do livro que deseja buscar:
+> O morro dos ventos uivantes
+
+----- LIVRO -----
+Título: O Morro dos Ventos Uivantes
+Autor: Brontë, Emily
+Idioma: pt
+Número de downloads: 1234
+-----------------
+```
+
+### Autores Vivos em um Ano:
+```
+Digite o ano que deseja pesquisar:
+> 1850
+
+Autores vivos no ano de 1850:
+- Brontë, Emily (1818 - 1848)
+- Shakespeare, William (1564 - 1616)
+```
+
+---
+
+## 👨‍💻 Autor
+Desenvolvido por **Eliel Mesquita Cunha**.
