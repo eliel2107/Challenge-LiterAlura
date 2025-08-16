@@ -4,8 +4,25 @@
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.3.1-green?style=for-the-badge&logo=spring-boot)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue?style=for-the-badge&logo=postgresql)
 ![Maven](https://img.shields.io/badge/Maven-4.0.0-red?style=for-the-badge&logo=apache-maven)
+![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)
+![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen?style=for-the-badge)
 
 **Status do Projeto:** Finalizado ✔️
+
+---
+
+## 📑 Tabela de Conteúdos
+- [📖 Descrição](#-descrição)
+- [✨ Funcionalidades](#-funcionalidades)
+- [🛠️ Tecnologias Utilizadas](#️-tecnologias-utilizadas)
+- [🏛️ Estrutura do Projeto](#️-estrutura-do-projeto)
+- [📄 Modelo de Dados](#-modelo-de-dados)
+- [🚀 Como Executar o Projeto](#-como-executar-o-projeto)
+- [🕹️ Exemplos de Uso](#️-exemplos-de-uso)
+- [📌 Próximos Passos](#-próximos-passos)
+- [🤝 Contribuindo](#-contribuindo)
+- [📜 Licença](#-licença)
+- [👨‍💻 Autor](#-autor)
 
 ---
 
@@ -166,5 +183,24 @@ Autores vivos no ano de 1850:
 
 ---
 
+## 📌 Próximos Passos
+- [ ] Implementar testes unitários  
+- [ ] Criar interface gráfica em JavaFX  
+- [ ] Disponibilizar versão Docker  
+- [ ] Adicionar suporte a mais APIs de livros  
+
+---
+
+## 🤝 Contribuindo
+Quer contribuir? Confira o guia em [CONTRIBUTING.md](CONTRIBUTING.md).  
+
+---
+
+## 📜 Licença
+Este projeto está sob a licença **MIT**.  
+Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.  
+
+---
+
 ## 👨‍💻 Autor
-Desenvolvido por **Eliel Mesquita Cunha**.
+Desenvolvido por **Eliel Mesquita Cunha** no Challenge Java da Alura. 🚀
