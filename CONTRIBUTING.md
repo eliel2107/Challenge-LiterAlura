@@ -68,5 +68,5 @@ Seja cordial, ajude iniciantes e mantenha discussões construtivas. 💙
 ---
 
 ## 👨‍💻 Autor
-Projeto desenvolvido por **Eliel** no Challenge Java da Alura.  
+Projeto desenvolvido por **Eliel Mesquita Cunha** no Challenge Java da Alura.  
 Sinta-se à vontade para contribuir e melhorar o LiterAlura! 🚀
